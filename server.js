@@ -1,6 +1,7 @@
 const express = require('express');
 const dotenv = require('dotenv');
 // const logger = require('./middleware/logger')
+const errorHandler = require('./middleware/error')
 const morgan = require('morgan')
 const colors = require('colors')
 const connectDB = require('./config/db')
@@ -29,7 +30,8 @@ if (process.env.NODE_ENV === 'development') {
 // mount routers
 app.use('/api/v1/bootcamps', bootcamps)
 
-
+//error handler
+app.use(errorHandler)
 
 
 
